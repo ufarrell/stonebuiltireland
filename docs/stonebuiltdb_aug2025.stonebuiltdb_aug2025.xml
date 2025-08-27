@@ -1,0 +1,1197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="stonebuiltdb_aug2025" schema="stonebuiltdb_aug2025" type="MySQL - 11.4.8-MariaDB-ubu2404">
+   <tables>
+      <table catalog="stonebuiltdb_aug2025" name="commodity" numRows="221" remarks="Linking material to material source" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="commodity_id" nullable="false" remarks="PK. Auto incrementing." size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="commodity_id" foreignKey="material_use_ibfk_2" implied="false" onDeleteCascade="false" table="material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="material_id" nullable="false" remarks="FK. Link to material." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_id" foreignKey="commodity_ibfk_1" implied="false" onDeleteCascade="false" table="material"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="material_source_id" nullable="false" remarks="FK. Link to material_source." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_source_id" foreignKey="commodity_ibfk_2" implied="false" onDeleteCascade="false" table="material_source"/>
+         </column>
+         <primaryKey column="commodity_id" sequenceNumberInPK="1"/>
+         <index name="commodity_s_pk" unique="true">
+            <column ascending="true" name="commodity_id"/>
+         </index>
+         <index name="fk_commodity_material" unique="false">
+            <column ascending="true" name="material_id"/>
+         </index>
+         <index name="material_source_id" unique="false">
+            <column ascending="true" name="material_source_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="commodity_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="construction" numRows="308" remarks="Phases of construction for a heritage site" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="construction_id" nullable="false" remarks="PK. Auto incrementing" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="construction_id" foreignKey="construction_styles_ibfk_2" implied="false" onDeleteCascade="false" table="construction_styles"/>
+            <child catalog="stonebuiltdb_aug2025" column="construction_id" foreignKey="material_use_ibfk_3" implied="false" onDeleteCascade="false" table="material_use"/>
+            <child catalog="stonebuiltdb_aug2025" column="construction_id" foreignKey="person_construction_ibfk_1" implied="false" onDeleteCascade="false" table="person_construction"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="heritage_site_id" nullable="false" remarks="FK. Link to heritage site." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="heritage_site_id" foreignKey="construction_ibfk_1" implied="false" onDeleteCascade="false" table="heritage_site"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="start_date" nullable="true" remarks="Start date of construction phase, with the degree of detail known (i.e. could be to the century, year, month, day)." size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="end_date" nullable="true" remarks="End date of construction phase with the degree of detail known (i.e. could be to century, to month, day etc.)" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="start_date_artificial" nullable="true" remarks="Start date to be used for sorting construction phases - over-precise date. When only a year is known, January 1st is used." size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="end_date_artificial" nullable="true" remarks="End date to be used for sorting construction phases - over-precise date. When only a year is known, December 31st is used." size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="construction_desc" nullable="true" remarks="Short description of the construction phase. Appears on the website for non-primary phases of construction." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="notes" nullable="true" remarks="Other notes relating to the construction phase - not public." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="is_public" nullable="true" remarks="Whether or not the construction phase is public. Used to control appearance on the website." size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="9" name="is_primary" nullable="true" remarks="Whether or not this is the primary phase of construction. Will control where the information appears on the website. The initial phase of construction is not always the primary phase." size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="entered_by" nullable="true" remarks="Person who originally entered the record" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="11" name="entered_date" nullable="true" remarks="Date of original entry (autofilled with current time)" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="12" name="modified_by" nullable="true" remarks="Person who made the latest modification" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="13" name="modified_date" nullable="true" remarks="Date of the latest modification (auto updates on modification)" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="relative_position" nullable="true" remarks="Uses the dates to determine relative position for each heritage site." size="10" type="INT" typeCode="4"/>
+         <primaryKey column="construction_id" sequenceNumberInPK="1"/>
+         <index name="construction_s_pk" unique="true">
+            <column ascending="true" name="construction_id"/>
+         </index>
+         <index name="fk_construction_heritage_site" unique="false">
+            <column ascending="true" name="heritage_site_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="construction_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="construction_styles" numRows="97" remarks="Linking a phase of construction to one or more architectural styles" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="construction_style_id" nullable="false" remarks="PK. Auto incrementing" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="construction_id" nullable="false" remarks="FK. Link to construction" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="construction_id" foreignKey="construction_styles_ibfk_2" implied="false" onDeleteCascade="false" table="construction"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="style_id" nullable="false" remarks="FK. Link to dic_style" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="style_id" foreignKey="construction_styles_ibfk_1" implied="false" onDeleteCascade="false" table="dic_style"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="is_primary_style" nullable="true" remarks="Whether the style is the primary style or a substyle" size="3" type="TINYINT" typeCode="-7"/>
+         <primaryKey column="construction_style_id" sequenceNumberInPK="1"/>
+         <index name="construction_styles_s_pk" unique="true">
+            <column ascending="true" name="construction_style_id"/>
+         </index>
+         <index name="idx_construction_style_construction_id" unique="false">
+            <column ascending="true" name="construction_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="construction_style_id"/>
+         </index>
+         <index name="style_id" unique="false">
+            <column ascending="true" name="style_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_century" numRows="20" remarks="Dictionary of centuries, and archaeological periods" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="century_id" nullable="false" remarks="PK. Auto incrementing." size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="century_id" foreignKey="heritage_site_ibfk_4" implied="false" onDeleteCascade="false" table="heritage_site"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="century" nullable="false" remarks="Century e.g. 19th." size="250" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="century_id" sequenceNumberInPK="1"/>
+         <index name="dic_century_s_pk" unique="true">
+            <column ascending="true" name="century_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="century_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_county" numRows="35" remarks="Dictionary of counties" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="county_id" nullable="false" remarks="PK. Auto incrementing" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="county_id" foreignKey="heritage_site_ibfk_1" implied="false" onDeleteCascade="false" table="heritage_site"/>
+            <child catalog="stonebuiltdb_aug2025" column="county_id" foreignKey="location_ibfk_1" implied="false" onDeleteCascade="false" table="location"/>
+            <child catalog="stonebuiltdb_aug2025" column="county_id" foreignKey="material_ibfk_1" implied="false" onDeleteCascade="false" table="material"/>
+            <child catalog="stonebuiltdb_aug2025" column="county_id" foreignKey="material_source_ibfk_1" implied="false" onDeleteCascade="false" table="material_source"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="county" nullable="false" remarks="Full name of county" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="province" nullable="true" remarks="Full name of province" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="county_code" nullable="true" remarks="County code" size="10" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="county_id" sequenceNumberInPK="1"/>
+         <index name="dic_county_s_pk" unique="true">
+            <column ascending="true" name="county_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="county_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_finish" numRows="34" remarks="Dictionary of material finishes (e.g. polished)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="finish_id" nullable="false" remarks="PK. Auto incrementing" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="finish_id" foreignKey="material_use_finish_ibfk_1" implied="false" onDeleteCascade="false" table="material_use_finish"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="finish" nullable="false" remarks="Material finish e.g. gauged" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="finish_description" nullable="true" remarks="Definition/source of the definition." size="65535" type="TEXT" typeCode="-1"/>
+         <primaryKey column="finish_id" sequenceNumberInPK="1"/>
+         <index name="dic_finish_s_pk" unique="true">
+            <column ascending="true" name="finish_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="finish_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_form_of_address" numRows="26" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="form_of_address_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="form_of_address_id" foreignKey="person_form_of_address_fk" implied="false" onDeleteCascade="false" table="person"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="1" name="form_of_address" nullable="true" remarks="Abbreviated form of address e.g. Rev. Dr. Col" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="form_of_address_full" nullable="true" remarks="Full form of address e.g. Reverend Doctor Colonel" size="250" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="form_of_address_id" sequenceNumberInPK="1"/>
+         <index name="dic_form_of_address_s_pk" unique="true">
+            <column ascending="true" name="form_of_address_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="form_of_address_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_fossil" numRows="22" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="fossil_id" nullable="false" remarks="PK. Auto incrementing." size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="fossil_id" foreignKey="material_fossil_dic_fossil" implied="false" onDeleteCascade="false" table="material_fossil"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="1" name="fossil_name" nullable="true" remarks="Fossils e.g. crinoids, brachiopods" size="500" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="fossil_id" sequenceNumberInPK="1"/>
+         <index name="dic_fossil_s_pk" unique="true">
+            <column ascending="true" name="fossil_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="fossil_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_georef_protocol" numRows="2" remarks="Dictionary of georeferencing protocols" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="georef_protocol_id" nullable="false" remarks="PK. Autoincrementing" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="georef_protocol_id" foreignKey="heritage_site_ibfk_5" implied="false" onDeleteCascade="false" table="heritage_site"/>
+            <child catalog="stonebuiltdb_aug2025" column="georef_protocol_id" foreignKey="location_ibfk_3" implied="false" onDeleteCascade="false" table="location"/>
+            <child catalog="stonebuiltdb_aug2025" column="georef_protocol_id" foreignKey="material_source_ibfk_6" implied="false" onDeleteCascade="false" table="material_source"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="georef_protocol" nullable="false" remarks="Shorthand for the method" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="georef_protocol_notes" nullable="true" remarks="Notes about the method" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="georef_protocol_citation" nullable="true" remarks="Citation for the method" size="65535" type="TEXT" typeCode="-1"/>
+         <primaryKey column="georef_protocol_id" sequenceNumberInPK="1"/>
+         <index name="dic_georef_protocol_s_pk" unique="true">
+            <column ascending="true" name="georef_protocol_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="georef_protocol_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_grain_crystal_size" numRows="4" remarks="Dictionary of grain/crystal sizes" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="grain_crystal_size_id" nullable="false" remarks="PK. Auto incrementing" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="grain_crystal_size_id" foreignKey="material_ibfk_2" implied="false" onDeleteCascade="false" table="material"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="1" name="grain_crystal_size" nullable="true" remarks="Size category of grain or crystals (e.g. fine)." size="250" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="grain_crystal_size_id" sequenceNumberInPK="1"/>
+         <index name="dic_grain_crystal_size_s_pk" unique="true">
+            <column ascending="true" name="grain_crystal_size_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="grain_crystal_size_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_gsi_strat" numRows="1180" remarks="Dictionary of lithostratigraphic unit names from Geological Survey Ireland" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="BedLexId" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="lithostrat_id" foreignKey="material_ibfk_7" implied="false" onDeleteCascade="false" table="material"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="1" name="rkUnitName" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="rkUnitCode" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="newcode" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="rkUnStatus" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="SheetNo100" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="rkUnDefRef" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="TypSection" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="rkUnContact" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="rkUnitInfo" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="rkUnSumary" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="11" name="rkUnitDesc" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="12" name="Rock_Type" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="13" name="System" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="Series" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="15" name="Stage" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="16" name="mPalaeZone" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="17" name="Comments" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="18" name="Editor" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="19" name="Edit_Date" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="20" name="Thickness" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <index name="BedLexId" unique="true">
+            <column ascending="true" name="BedLexId"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_heritage_site_type" numRows="58" remarks="Dictionary of heritage site types e.g. church, bank" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="heritage_site_type_id" nullable="false" remarks="PK. Auto incrementing." size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="heritage_site_type_id" foreignKey="heritage_site_ibfk_2" implied="false" onDeleteCascade="false" table="heritage_site"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="heritage_site_type" nullable="false" remarks="Type of heritage site (e.g. church, house)." size="500" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="heritage_site_type_id" sequenceNumberInPK="1"/>
+         <index name="dic_heritage_site_type_s_pk" unique="true">
+            <column ascending="true" name="heritage_site_type_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="heritage_site_type_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_ics_age" numRows="173" remarks="Dictionary of International Commission on Stratigraphy geological age names" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="ics_id" nullable="false" remarks="PK. Auto incrementing." size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="age_ics_id" foreignKey="material_ibfk_6" implied="false" onDeleteCascade="false" table="material"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ics_name" nullable="false" remarks="International Commission on Stratigraphy timescale name." size="50" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="4" id="2" name="earliest_age" nullable="true" remarks="Earliest age (Ma)" size="12" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="4" id="3" name="latest_age" nullable="true" remarks="Latest age (Ma)" size="12" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="ics_parent_id" nullable="true" remarks="ID of the parent ics_name." size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="ics_level" nullable="true" remarks="Level of age bin 1=Eon, 2=Era, 3=Period, 4=Epoch, 5=Age" size="10" type="INT" typeCode="4"/>
+         <primaryKey column="ics_id" sequenceNumberInPK="1"/>
+         <index name="dic_ics_age_s_pk" unique="true">
+            <column ascending="true" name="ics_id"/>
+         </index>
+         <index name="ics_name" unique="false">
+            <column ascending="true" name="ics_name"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="ics_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_material_condition" numRows="5" remarks="Dictionary of material condition" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="material_condition_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="material_condition_id" foreignKey="material_use_ibfk_4" implied="false" onDeleteCascade="false" table="material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="material_condition" nullable="false" remarks="Condition from very good to very poor." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="definition" nullable="true" remarks="" size="4000" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="material_condition_id" sequenceNumberInPK="1"/>
+         <index name="dic_material_condition_s_pk" unique="true">
+            <column ascending="true" name="material_condition_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_condition_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_material_position" numRows="2" remarks="Dictionary of material use position in a heritage site (interior, exterior)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="material_position_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="material_position_id" foreignKey="material_use_ibfk_5" implied="false" onDeleteCascade="false" table="material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="material_position" nullable="false" remarks="Position in the building - interior or exterior" size="255" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="material_position_id" sequenceNumberInPK="1"/>
+         <index name="dic_material_position_s_pk" unique="true">
+            <column ascending="true" name="material_position_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_position_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_material_source_distance" numRows="5" remarks="Dictionary of qualitative material source distance from heritage site (e.g. onsite, local)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="material_source_distance_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="source_distance_id" foreignKey="material_use_ibfk_6" implied="false" onDeleteCascade="false" table="material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="material_source_distance" nullable="false" remarks="Relative distance of the material source from the heritage site - from onsite to international" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="description" nullable="true" remarks="" size="4000" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="material_source_distance_id" sequenceNumberInPK="1"/>
+         <index name="dic_material_source_distance_s_pk" unique="true">
+            <column ascending="true" name="material_source_distance_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_source_distance_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_material_source_type" numRows="2" remarks="Dictionary of material source type (e.g. quarry, brickfield)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="material_source_type_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="material_source_type_id" foreignKey="material_source_ibfk_2" implied="false" onDeleteCascade="false" table="material_source"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="material_source_type" nullable="false" remarks="Source type - Quarry or Brickfield." size="250" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="material_source_type_id" sequenceNumberInPK="1"/>
+         <index name="dic_material_source_type_s_pk" unique="true">
+            <column ascending="true" name="material_source_type_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_source_type_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_material_type" numRows="195" remarks="Dictionary of materials, rock types from Macrostrat" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="material_type_id" nullable="false" remarks="Primary key, autoincrementing" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="material_type_id" foreignKey="material_ibfk_4" implied="false" onDeleteCascade="false" table="material"/>
+            <child catalog="stonebuiltdb_aug2025" column="material_type_id" foreignKey="material_source_ibfk_7" implied="false" onDeleteCascade="false" table="material_source"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="material_name" nullable="false" remarks="Name of the material (e.g. granite, limestone, yellow brick, galena)" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="material_type" nullable="true" remarks="Material type (e.g. volcanic, carbonate, siliciclastic)" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="material_group" nullable="true" remarks="Material group (e.g. sandstones, mafic, felsic, Dunham, Folk)" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="material_class" nullable="true" remarks="Material class (igneous, sedimentary, metamorphic)" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="material_category" nullable="false" remarks="Primary material category (rock, mineral, other)" size="250" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="material_type_id" sequenceNumberInPK="1"/>
+         <index name="dic_material_type_s_pk" unique="true">
+            <column ascending="true" name="material_type_id"/>
+         </index>
+         <index name="material_name" unique="false">
+            <column ascending="true" name="material_name"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_type_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_person_suffix" numRows="3" remarks="Dictionary of suffixes for peoples names (e.g. Jr. Sr. Esq.)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="person_suffix_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="person_suffix_id" foreignKey="person_suffix_fk" implied="false" onDeleteCascade="false" table="person"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="suffix" nullable="false" remarks="Abbreviated suffix e.g. Jr. Esq." size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="suffix_full" nullable="false" remarks="Full version of suffix e.g. Junior, Esquire" size="250" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="person_suffix_id" sequenceNumberInPK="1"/>
+         <index name="dic_person_suffix_s_pk" unique="true">
+            <column ascending="true" name="person_suffix_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="person_suffix_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_relationship" numRows="17" remarks="Dictionary of relationship between people (e.g. parent of)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="relationship_id" nullable="false" remarks="PK. Autoincrementing integer" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="relationship_id" foreignKey="person_relationship_ibfk_3" implied="false" onDeleteCascade="false" table="person_relationship"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="relationship" nullable="false" remarks="Description of the relationship e.g. owner of" size="500" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="relationship_id" sequenceNumberInPK="1"/>
+         <index name="dic_relationship_s_pk" unique="true">
+            <column ascending="true" name="relationship_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="relationship_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_role" numRows="12" remarks="Dictionary of roles for people (e.g. architect, builder)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="role_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="role_id" foreignKey="person_role_fk" implied="false" onDeleteCascade="false" table="person"/>
+            <child catalog="stonebuiltdb_aug2025" column="role_id" foreignKey="person_construction_ibfk_3" implied="false" onDeleteCascade="false" table="person_construction"/>
+            <child catalog="stonebuiltdb_aug2025" column="role_id" foreignKey="person_material_source_ibfk_3" implied="false" onDeleteCascade="false" table="person_material_source"/>
+            <child catalog="stonebuiltdb_aug2025" column="role_id" foreignKey="person_material_use_ibfk_3" implied="false" onDeleteCascade="false" table="person_material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="role" nullable="false" remarks="Role e.g. architect, builder, engineer" size="250" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="role_id" sequenceNumberInPK="1"/>
+         <index name="dic_role_s_pk" unique="true">
+            <column ascending="true" name="role_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="role_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_status" numRows="3" remarks="Dictionary of status for material sources (e.g. active, inactive)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="status_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="status_id" foreignKey="material_source_ibfk_5" implied="false" onDeleteCascade="false" table="material_source"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="status" nullable="false" remarks="Status of a quarry e.g. active, inactive" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="status_definition" nullable="true" remarks="Definition of terms" size="65535" type="TEXT" typeCode="-1"/>
+         <primaryKey column="status_id" sequenceNumberInPK="1"/>
+         <index name="dic_status_s_pk" unique="true">
+            <column ascending="true" name="status_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="status_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_style" numRows="32" remarks="Dictionary of styles (e.g. Gothic, Romanesque)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="style_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="style_id" foreignKey="construction_styles_ibfk_1" implied="false" onDeleteCascade="false" table="construction_styles"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="style_name" nullable="false" remarks="Name of the style e.g. Gothic" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="style_description" nullable="true" remarks="Description of the style (with source if relevant)" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="alternate_names" nullable="true" remarks="Alternate name e.g. Neo-Gothic for Gothic Revival" size="65535" type="TEXT" typeCode="-1"/>
+         <primaryKey column="style_id" sequenceNumberInPK="1"/>
+         <index name="dic_style_s_pk" unique="true">
+            <column ascending="true" name="style_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="style_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_title" numRows="23" remarks="Dictionary of titles for people (e.g. Earl)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="title_id" nullable="false" remarks="PK. Autoincrementing integer" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="title_id" foreignKey="title_person_title_fk" implied="false" onDeleteCascade="false" table="person_title"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="title" nullable="false" remarks="Title, usually noble titles" size="250" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="title_id" sequenceNumberInPK="1"/>
+         <index name="dic_title_s_pk" unique="true">
+            <column ascending="true" name="title_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="title_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_townland" numRows="60002" remarks="Dictionary of townlands, downloaded from townlands.ie" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="townland_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="townland_id" foreignKey="heritage_site_ibfk_3" implied="false" onDeleteCascade="false" table="heritage_site"/>
+            <child catalog="stonebuiltdb_aug2025" column="townland_id" foreignKey="location_ibfk_2" implied="false" onDeleteCascade="false" table="location"/>
+            <child catalog="stonebuiltdb_aug2025" column="townland_id" foreignKey="material_source_ibfk_4" implied="false" onDeleteCascade="false" table="material_source"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="1" name="osm_id" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name_tag" nullable="false" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="name_ga" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="name_en" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="alt_name" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="alt_name_g" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="co_name" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="cp_name" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="ed_name" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="bar_name" nullable="true" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="11" name="t_ie_url" nullable="true" remarks="" size="2083" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="10" id="12" name="lat_dec" nullable="true" remarks="" size="12" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="10" id="13" name="long_dec" nullable="true" remarks="" size="12" type="DECIMAL" typeCode="3"/>
+         <primaryKey column="townland_id" sequenceNumberInPK="1"/>
+         <index name="dic_townland_s_pk" unique="true">
+            <column ascending="true" name="townland_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="townland_id"/>
+         </index>
+         <index name="townland_name" unique="false">
+            <column ascending="true" name="name_tag"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="dic_use_feature" numRows="125" remarks="Dictionary of features (e.g. column, wall)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="use_feature_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="use_feature_id" foreignKey="material_use_ibfk_7" implied="false" onDeleteCascade="false" table="material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="use_feature" nullable="false" remarks="Feature e.g. wall, column" size="200" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="use_feature_description" nullable="true" remarks="Definition/decsription of the feature with source if relevant" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="alternate_names" nullable="true" remarks="Any alternate names for the feature" size="500" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="use_feature_id" sequenceNumberInPK="1"/>
+         <index name="dic_use_feature_s_pk" unique="true">
+            <column ascending="true" name="use_feature_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="use_feature_id"/>
+         </index>
+         <index name="use_feature" unique="false">
+            <column ascending="true" name="use_feature"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="heritage_site" numRows="181" remarks="Heritages sites including their location and a description" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="heritage_site_id" nullable="false" remarks="Primary key, autoincrementing ID" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="heritage_site_id" foreignKey="construction_ibfk_1" implied="false" onDeleteCascade="false" table="construction"/>
+            <child catalog="stonebuiltdb_aug2025" column="heritage_site_id" foreignKey="material_use_ibfk_1" implied="false" onDeleteCascade="false" table="material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="heritage_site_name" nullable="false" remarks="Name of the heritage site. Not NULL, unique. If multiple sites exist with the same name, include additional identifying information as appropriate (e.g. town, city, county). Church of Ireland = CoI. Roman catholic = RC." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="heritage_site_type_id" nullable="true" remarks="FK. Link to dictionary of site types" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="heritage_site_type_id" foreignKey="heritage_site_ibfk_2" implied="false" onDeleteCascade="false" table="dic_heritage_site_type"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="is_public" nullable="false" remarks="Whether the site is public or not. Used to control appearance on website." size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="address_locality" nullable="true" remarks="Street address if available, general name/locality if street address is not available" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="town_city" nullable="true" remarks="Town/City/Village name" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="6" id="6" name="lat_dec" nullable="true" remarks="Latitude as a decimal type (usually from google maps)" size="8" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="6" id="7" name="long_dec" nullable="true" remarks="Longitude as a decimal type (usually from google maps)" size="9" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="datum" nullable="true" remarks="Geodetic datum (usually WGS84 from google maps)" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="2" id="9" name="uncertainty_m" nullable="true" remarks="DarwinCore: The horizontal distance in meters from the given decimalLatitude and decimalLongitude that describes the smallest enclosing circle that contains the whole of the location. Leave the value empty if the uncertainty is unknown, cannot be estimated, or is not applicable (because there are no coordinates). Zero is not a valid value for this term. This term corresponds with the geographic radial of the final georeference." size="10" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="georef_remarks" nullable="true" remarks="DarwinCore: Notes or comments out of the ordinary about the georeference, explaining assumptions made in addition or opposition to those formalized in the method referred to in georeferenceProtocol. e.g. assumed distance by road (Hwy. 101)" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="11" name="location_remarks" nullable="true" remarks="DarwinCore: Notes or comments of interest about the location (not the georeference of the location, which go in georeferenceRemarks). e.g. Villa Epecuen was inundated in November 1985 and ceased to be inhabited until 2009" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="12" name="georef_date" nullable="true" remarks="Date georeferenced" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="13" name="georef_by" nullable="true" remarks="DarwinCore: the individual(s) who last modified the georeference and when that happened. These correspond to the final authority on the georeference in its current state, regardless of who might have worked on previous versions of the georeference." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="georef_sources" nullable="true" remarks="DarwinCore: A list (concatenated and separated) of maps, gazetteers, or other resources used to georeference the location, described specifically enough to allow anyone in the future to use the same resources." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="15" name="georef_protocol_id" nullable="true" remarks="FK. Link to dic_georef_protocol" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="georef_protocol_id" foreignKey="heritage_site_ibfk_5" implied="false" onDeleteCascade="false" table="dic_georef_protocol"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="16" name="osi_six_last" nullable="true" remarks="Presence or absence on OSI 6-inch historical map, last edition (1910s-1950s)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="17" name="osi_six_first" nullable="true" remarks="Presence or absence on OSI 6-inch historical map, first edition (1829-41)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="18" name="osi_twentyfive" nullable="true" remarks="Presence or absence on OSI 25-inch historical map (1897-1913)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="19" name="townland_verbatim" nullable="true" remarks="Verbatim townland name. For use especially for areas without formal townland designation (e.g. in Dublin)" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="20" name="townland_id" nullable="true" remarks="FK. Link to townlands.ie dictionary" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="townland_id" foreignKey="heritage_site_ibfk_3" implied="false" onDeleteCascade="false" table="dic_townland"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="21" name="county_id" nullable="true" remarks="FK. Link to dictionary of counties" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="county_id" foreignKey="heritage_site_ibfk_1" implied="false" onDeleteCascade="false" table="dic_county"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'IE'" digits="0" id="22" name="country_code" nullable="true" remarks="Country code, ISO standard. Default: IE" size="3" type="CHAR" typeCode="1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="23" name="heritage_site_desc" nullable="true" remarks="Details of the heritage site, which will appear on the website. HTML tags are included for formatting." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="24" name="harbison_id" nullable="true" remarks="Identifier from Harbison, P. (1970). Guide to the National Monuments in the Republic of Ireland. 1st Ed. Gill and Macmillan, M.H. Gill &amp; Co. U. C." size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="25" name="nat_mon_id" nullable="true" remarks="National Monument Number. Description from National Monuments Service: When a monument is taken into State ownership or guardianship its details are added to a National Monuments Register. In the earlier years, when a number of monuments were taken in State care at the same time, they were all given the same register number e.g. the monuments on the Dingle peninsula are all registered under number 221. Similarly, groups of monument such as the passage tombs at Lough Crew will have the same registration number.  The register is not entirely up-to-date with the result that some of the more recent acquisitions have yet to be assigned numbers.&quot;" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="26" name="opw_monuments_ID" nullable="true" remarks="ID from spreadsheet from OPW of monuments in state care." size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="27" name="rmp_id" nullable="true" remarks="Description from National Monuments Service: Each monument is entered in the Record of Monuments and Places (RMP) as established under Section 12 of the National Monuments (Amendment) Act 1994. A unique identifying number is assigned to each monument and place in the record. The RMP number provides the link to the records of the Archaeological Survey of Ireland (ASI) which contains further information on the monument in question." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="28" name="dia_id" nullable="true" remarks="ID from the Dictionary of Irish Architects." size="7" type="MEDIUMINT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="29" name="niah_reg_no" nullable="true" remarks="Registration number from the National Inventory of Architectural Heritage (NIAH)" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="30" name="is_opw_site" nullable="true" remarks="Whether or not the heritage site is run by the Office of Public Works (OPW)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="31" name="opw_url" nullable="true" remarks="Url for the Office of Public Works website (OPW)" size="3000" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="32" name="century_id" nullable="true" remarks="FK. Link to dictionary of centuries" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="century_id" foreignKey="heritage_site_ibfk_4" implied="false" onDeleteCascade="false" table="dic_century"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="33" name="entered_by" nullable="true" remarks="Person who originally entered the record" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="34" name="entered_date" nullable="true" remarks="Date of original entry" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="35" name="modified_by" nullable="true" remarks="Person who made the latest modification" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="36" name="modified_date" nullable="true" remarks="Date of latest modification - auto updates on modification" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="37" name="irish_grid_easting" nullable="true" remarks="Irish grid easting" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="38" name="irish_grid_northing" nullable="true" remarks="Irish grid northing" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="39" name="itm_easting" nullable="true" remarks="ITM easting" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="40" name="itm_northing" nullable="true" remarks="ITM northing" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="41" name="site_visit" nullable="true" remarks="Whether or not the site was visited in person" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="42" name="site_visit_by" nullable="true" remarks="Who visited the site" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="43" name="site_visit_date" nullable="true" remarks="Date of the last site visit" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="44" name="site_visit_notes" nullable="true" remarks="Notes about the visit" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="45" name="notes" nullable="true" remarks="General additional notes, not for public website" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="46" name="geom" nullable="true" remarks="Point data type generated from decimal lat and long" size="0" type="POINT" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="47" name="heritage_site_tag" nullable="true" remarks="Autogenerated unique tag for heritage sites, used to link heritage sites to references in Zotero and images in the WP image library. Created by taking the heritage site name and removing all special characters/punctuation, replacing spaces and slashes with underscores." size="255" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="heritage_site_id" sequenceNumberInPK="1"/>
+         <index name="heritage_site_s_pk" unique="true">
+            <column ascending="true" name="heritage_site_id"/>
+         </index>
+         <index name="century_id" unique="false">
+            <column ascending="true" name="century_id"/>
+         </index>
+         <index name="county_id" unique="false">
+            <column ascending="true" name="county_id"/>
+         </index>
+         <index name="georef_protocol_id" unique="false">
+            <column ascending="true" name="georef_protocol_id"/>
+         </index>
+         <index name="heritage_site_name" unique="false">
+            <column ascending="true" name="heritage_site_name"/>
+         </index>
+         <index name="heritage_site_type_id" unique="false">
+            <column ascending="true" name="heritage_site_type_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="heritage_site_id"/>
+         </index>
+         <index name="townland_id" unique="false">
+            <column ascending="true" name="townland_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="location" numRows="61" remarks="Locations/Addresses for stoneworks, marble mills etc." type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="location_id" nullable="false" remarks="PK autoincrement id" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="location_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="material_use"/>
+            <child catalog="stonebuiltdb_aug2025" column="location_id" foreignKey="person_location_ibfk_2" implied="false" onDeleteCascade="false" table="person_location"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="1" name="address_locality" nullable="true" remarks="Street address where possible, general name/locality if street address is not available" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="town_city" nullable="true" remarks="Town/City/Village name" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="postcode" nullable="true" remarks="Postcode/eircode" size="50" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="4" name="is_public" nullable="true" remarks="Whether the location is public or not (will appear on website)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="start_year" nullable="true" remarks="Year the site opened" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="end_year" nullable="true" remarks="Year the site was closed" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="active_dates_verbatim" nullable="true" remarks="Active dates, in whatever format is available." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="townland_id" nullable="true" remarks="FK Links to dictionary from townlands.ie" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="townland_id" foreignKey="location_ibfk_2" implied="false" onDeleteCascade="false" table="dic_townland"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="townland_verbatim" nullable="true" remarks="Verbatim townland - may include parishes etc where townland is not available" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="county_id" nullable="true" remarks="FK references dic_county" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="county_id" foreignKey="location_ibfk_1" implied="false" onDeleteCascade="false" table="dic_county"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'IE'" digits="0" id="11" name="country_code" nullable="true" remarks="Country code - default is IE" size="3" type="CHAR" typeCode="1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="12" name="itm_easting" nullable="true" remarks="Irish ITM easting" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="13" name="itm_northing" nullable="true" remarks="Irish ITM northing" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="site_visit" nullable="true" remarks="Whether or not the site was visited in person" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="15" name="site_visit_by" nullable="true" remarks="Who visited the site" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="16" name="site_visit_date" nullable="true" remarks="Date of the last site visit" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="17" name="site_visit_notes" nullable="true" remarks="Notes about the visit" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="18" name="irish_grid_easting" nullable="true" remarks="Irish grid easting" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="19" name="irish_grid_northing" nullable="true" remarks="Irish grid northing" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="6" id="20" name="lat_dec" nullable="true" remarks="Decimal latitude" size="8" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="6" id="21" name="long_dec" nullable="true" remarks="Decimal longitude" size="9" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="22" name="datum" nullable="true" remarks="Datum for decimal lat-long eg. WGS84" size="50" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="2" id="23" name="uncertainty_m" nullable="true" remarks="DarwinCore: The horizontal distance in meters from the given decimalLatitude and decimalLongitude that describes the smallest enclosing circle that contains the whole of the location. Leave the value empty if the uncertainty is unknown, cannot be estimated, or is not applicable (because there are no coordinates). Zero is not a valid value for this term. This term corresponds with the geographic radial of the final georeference." size="10" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="24" name="georef_remarks" nullable="true" remarks="DarwinCore: Notes or comments out of the ordinary about the georeference, explaining assumptions made in addition or opposition to those formalized in the method referred to in georeferenceProtocol. e.g. assumed distance by road (Hwy. 101)" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="25" name="location_remarks" nullable="true" remarks="DarwinCore: Notes or comments of interest about the location (not the georeference of the location, which go in georeferenceRemarks). e.g. Villa Epecuen was inundated in November 1985 and ceased to be inhabited until 2009" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="26" name="georef_by" nullable="true" remarks="DarwinCore: the individual(s) who last modified the georeference and when that happened. These correspond to the final authority on the georeference in its current state, regardless of who might have worked on previous versions of the georeference." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="27" name="georef_date" nullable="true" remarks="Date georeferenced" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="28" name="georef_sources" nullable="true" remarks="DarwinCore: A list (concatenated and separated) of maps, gazetteers, or other resources used to georeference the location, described specifically enough to allow anyone in the future to use the same resources." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="29" name="georef_protocol_id" nullable="true" remarks="FK. Link to dic_georef_protocol" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="georef_protocol_id" foreignKey="location_ibfk_3" implied="false" onDeleteCascade="false" table="dic_georef_protocol"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="30" name="osi_six_last" nullable="true" remarks="Presence or absence on OSI 6-inch historical map, last edition (1910s-1950s)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="31" name="osi_six_first" nullable="true" remarks="Presence or absence on OSI 6-inch historical map, first edition (1829-41)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="32" name="osi_twentyfive" nullable="true" remarks="Presence or absence on OSI 25-inch historical map (1897-1913)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="33" name="notes_public" nullable="true" remarks="Notes that would/could appear on the website." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="34" name="notes" nullable="true" remarks="Additional notes - these will not be published on the website" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="35" name="entered_by" nullable="true" remarks="Person who entered the initial record" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="36" name="entered_date" nullable="true" remarks="Date of original entry. Autogenerated with current timestamp" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="37" name="modified_by" nullable="true" remarks="Person who made the latest modification" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="38" name="modified_date" nullable="true" remarks="Date of latest modification. Autogenerated current timestamp on update" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="39" name="geom" nullable="true" remarks="Stored computed column. Creates geom point from lat_dec and long_dec" size="0" type="POINT" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="40" name="location_tag" nullable="true" remarks="Autogenerated tag" size="255" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="location_id" sequenceNumberInPK="1"/>
+         <index name="location_s_pk" unique="true">
+            <column ascending="true" name="location_id"/>
+         </index>
+         <index name="county_id" unique="false">
+            <column ascending="true" name="county_id"/>
+         </index>
+         <index name="georef_protocol_id" unique="false">
+            <column ascending="true" name="georef_protocol_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="location_id"/>
+         </index>
+         <index name="townland_id" unique="false">
+            <column ascending="true" name="townland_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="material" numRows="265" remarks="Materials (stones) including a description and their geological context." type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="material_id" nullable="false" remarks="PK autoincrementing unique identifier for materials" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="material_id" foreignKey="commodity_ibfk_1" implied="false" onDeleteCascade="false" table="commodity"/>
+            <child catalog="stonebuiltdb_aug2025" column="parent_material_id" foreignKey="material_ibfk_5" implied="false" onDeleteCascade="false" table="material"/>
+            <child catalog="stonebuiltdb_aug2025" column="material_id" foreignKey="material_fossil_material" implied="false" onDeleteCascade="false" table="material_fossil"/>
+            <child catalog="stonebuiltdb_aug2025" column="material_id" foreignKey="material_sample_ibfk_1" implied="false" onDeleteCascade="false" table="material_sample"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="1" name="parent_material_id" nullable="true" remarks="FK self referencing to record when a material is a subset of another e.g. Wickow Granite is a subset of Leinster Granite" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_id" foreignKey="material_ibfk_5" implied="false" onDeleteCascade="false" table="material"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="common_name" nullable="false" remarks="The common name for the material e.g. Connemara marble" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="3" name="is_public" nullable="false" remarks="Whether or not the material is public (will appear on website)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="alternative_names" nullable="true" remarks="Alternative name(s) for materials." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="material_type_id" nullable="true" remarks="FK. Link to dic_material_type" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_type_id" foreignKey="material_ibfk_4" implied="false" onDeleteCascade="false" table="dic_material_type"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="material_name_verbatim" nullable="true" remarks="Specific rock type or mineral name" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="colour" nullable="true" remarks="Colour or colour range of the stone" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="colour_variation" nullable="true" remarks="Variation of colour" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="grain_crystal_size_id" nullable="true" remarks="FK. Link to dic_grain_crystal_size" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="grain_crystal_size_id" foreignKey="material_ibfk_2" implied="false" onDeleteCascade="false" table="dic_grain_crystal_size"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="context_of_use" nullable="true" remarks="Where the material is usually used." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="11" name="material_desc" nullable="true" remarks="General description, discussion of the material. Public formatted version which appears on the website." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="12" name="notes" nullable="true" remarks="Notes, not public for internal use only" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="13" name="age_ics_id" nullable="true" remarks="FK. Id of the international commission on stratigraphy age name" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="ics_id" foreignKey="material_ibfk_6" implied="false" onDeleteCascade="false" table="dic_ics_age"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="age_verbatim" nullable="true" remarks="Geological age verbatim e.g. local age name" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="15" name="geol_group" nullable="true" remarks="Geological group name" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="16" name="geol_formation" nullable="true" remarks="Geological formation name" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="17" name="geol_member" nullable="true" remarks="Geological member name" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="18" name="geol_strat_verbatim" nullable="true" remarks="Lithostratigraphy, originally as reported on google sheets" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="19" name="lithostrat_id" nullable="true" remarks="Link to dictionary of lithostratigraphy from GSI" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="BedLexId" foreignKey="material_ibfk_7" implied="false" onDeleteCascade="false" table="dic_gsi_strat"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="20" name="bgs_strat_code" nullable="true" remarks="Code from the British Geological Survey Lexicon of named stratigraphic units https://www.bgs.ac.uk/technologies/the-bgs-lexicon-of-named-rock-units/" size="255" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="21" name="strat_notes" nullable="true" remarks="Notes about the stratigraphy" size="1000" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="22" name="country_of_origin" nullable="true" remarks="Country material originates from" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="23" name="county_id" nullable="true" remarks="Link to dic_county for county of origin" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="county_id" foreignKey="material_ibfk_1" implied="false" onDeleteCascade="false" table="dic_county"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="24" name="is_in_eurlithos" nullable="true" remarks="Presence or absence in Eurlithos database (EN 12440)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="25" name="nsdni_url" nullable="true" remarks="URL for Northern Irish Natural Stone Database (stonedatabase.com)" size="3000" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="26" name="bsds_id" nullable="true" remarks="ID for Scottish Building Stone Database. Find the ID for stones in the URL. Quarry ID is visible in tables." size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="27" name="documentary_sources_verbatim" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="28" name="entered_by" nullable="true" remarks="Data orginally entered by" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="29" name="entered_date" nullable="true" remarks="Date of original entry" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="30" name="modified_by" nullable="true" remarks="Person who made the latest modification" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="31" name="modified_date" nullable="true" remarks="Date of latest modification" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="32" name="material_tag" nullable="true" remarks="Autogenerated Tag for materials, used to link to references and photos. Created by taking the common name and removing all special characters/punctuation, replacing spaces with underscores." size="500" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="material_id" sequenceNumberInPK="1"/>
+         <index name="material_s_pk" unique="true">
+            <column ascending="true" name="material_id"/>
+         </index>
+         <index name="common_name" unique="false">
+            <column ascending="true" name="common_name"/>
+         </index>
+         <index name="county_id" unique="false">
+            <column ascending="true" name="county_id"/>
+         </index>
+         <index name="grain_crystal_size_id" unique="false">
+            <column ascending="true" name="grain_crystal_size_id"/>
+         </index>
+         <index name="material_ibfk_6" unique="false">
+            <column ascending="true" name="age_ics_id"/>
+         </index>
+         <index name="material_type_id" unique="false">
+            <column ascending="true" name="material_type_id"/>
+         </index>
+         <index name="parent_material_id" unique="false">
+            <column ascending="true" name="parent_material_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_id"/>
+         </index>
+         <index name="strat_objectid" unique="false">
+            <column ascending="true" name="lithostrat_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="material_fossil" numRows="54" remarks="Linking materials to one or more fossils" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="material_id" nullable="false" remarks="PK/FK. Link to material" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_id" foreignKey="material_fossil_material" implied="false" onDeleteCascade="false" table="material"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="fossil_id" nullable="false" remarks="PK/FK. Link to dic_fossil" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="fossil_id" foreignKey="material_fossil_dic_fossil" implied="false" onDeleteCascade="false" table="dic_fossil"/>
+         </column>
+         <primaryKey column="material_id" sequenceNumberInPK="1"/>
+         <primaryKey column="fossil_id" sequenceNumberInPK="2"/>
+         <index name="material_fossil_s_pk" unique="true">
+            <column ascending="true" name="material_id"/>
+            <column ascending="true" name="fossil_id"/>
+         </index>
+         <index name="fossil_id" unique="false">
+            <column ascending="true" name="fossil_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_id"/>
+            <column ascending="true" name="fossil_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="material_sample" numRows="2" remarks="Linking materials to one or more museum samples" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="material_id" nullable="false" remarks="PK/FK. Link to material" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_id" foreignKey="material_sample_ibfk_1" implied="false" onDeleteCascade="false" table="material"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="arctos_code" nullable="false" remarks="Code from Arctos" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="sample_notes" nullable="true" remarks="Notes about the sample - only if details not captured in Arctos." size="4000" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="material_id" sequenceNumberInPK="1"/>
+         <primaryKey column="arctos_code" sequenceNumberInPK="2"/>
+         <index name="material_sample_s_pk" unique="true">
+            <column ascending="true" name="material_id"/>
+            <column ascending="true" name="arctos_code"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_id"/>
+            <column ascending="true" name="arctos_code"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="material_source" numRows="301" remarks="Material Sources (quarries) including a description and their location." type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="material_source_id" nullable="false" remarks="PK autoincrement id" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="material_source_id" foreignKey="commodity_ibfk_2" implied="false" onDeleteCascade="false" table="commodity"/>
+            <child catalog="stonebuiltdb_aug2025" column="parent_material_source_id" foreignKey="material_source_ibfk_3" implied="false" onDeleteCascade="false" table="material_source"/>
+            <child catalog="stonebuiltdb_aug2025" column="material_source_id" foreignKey="person_material_source_ibfk_1" implied="false" onDeleteCascade="false" table="person_material_source"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="1" name="parent_material_source_id" nullable="true" remarks="Parent id - references material_id" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_source_id" foreignKey="material_source_ibfk_3" implied="false" onDeleteCascade="false" table="material_source"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="material_source_name" nullable="false" remarks="Name of the quarry or brickfield" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="is_public" nullable="false" remarks="Whether the material source is public or not (will appear on website)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="material_source_type_id" nullable="true" remarks="FK references dic_material_source_type - the type of site (quarry/brickfield)" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_source_type_id" foreignKey="material_source_ibfk_2" implied="false" onDeleteCascade="false" table="dic_material_source_type"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="start_date" nullable="true" remarks="Date the site opened" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="end_date" nullable="true" remarks="Date the site was closed" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="start_date_artificial" nullable="true" remarks="Start date to be used for sorting - over precise date. When only a year is known, January 1st is used." size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="end_date_artificial" nullable="true" remarks="End date to be used for sorting - over-precise date. When only a year is known, December 31st is used." size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="status_id" nullable="true" remarks="FK references dic_status - whether the site is active, inactive or closed" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="status_id" foreignKey="material_source_ibfk_5" implied="false" onDeleteCascade="false" table="dic_status"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="material_source_desc" nullable="true" remarks="Description - version published on the website." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="11" name="address_locality" nullable="true" remarks="Street address if available, general name/locality if street address is not available e.g. 2km S of Athlone" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="12" name="town_city" nullable="true" remarks="Town/City/Village name" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="13" name="townland_id" nullable="true" remarks="FK Links to dictionary from townlands.ie" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="townland_id" foreignKey="material_source_ibfk_4" implied="false" onDeleteCascade="false" table="dic_townland"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="townland_verbatim" nullable="true" remarks="Verbatim townland - may include parishes etc where townland is not available" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="15" name="county_id" nullable="true" remarks="FK references dic_county" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="county_id" foreignKey="material_source_ibfk_1" implied="false" onDeleteCascade="false" table="dic_county"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'IE'" digits="0" id="16" name="country_code" nullable="true" remarks="Country code - default is IE" size="3" type="CHAR" typeCode="1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="3" id="17" name="itm_easting" nullable="true" remarks="Irish ITM easting" size="10" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="3" id="18" name="itm_northing" nullable="true" remarks="Irish ITM northing" size="10" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="19" name="site_visit" nullable="true" remarks="Whether or not the site was visited in person" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="20" name="site_visit_by" nullable="true" remarks="Who visited the site" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="21" name="site_visit_date" nullable="true" remarks="Date of the last site visit" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="22" name="site_visit_notes" nullable="true" remarks="Notes about the visit" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="23" name="irish_grid_easting" nullable="true" remarks="Irish grid easting" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="24" name="irish_grid_northing" nullable="true" remarks="Irish grid northing" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="6" id="25" name="lat_dec" nullable="true" remarks="Decimal latitude" size="8" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="6" id="26" name="long_dec" nullable="true" remarks="Decimal longitude" size="9" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="27" name="datum" nullable="true" remarks="Datum for decimal lat-long eg. WGS84" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="2" id="28" name="uncertainty_m" nullable="true" remarks="DarwinCore: The horizontal distance in meters from the given decimalLatitude and decimalLongitude that describes the smallest enclosing circle that contains the whole of the location. Leave the value empty if the uncertainty is unknown, cannot be estimated, or is not applicable (because there are no coordinates). Zero is not a valid value for this term. This term corresponds with the geographic radial of the final georeference." size="10" type="DECIMAL" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="29" name="georef_remarks" nullable="true" remarks="DarwinCore: Notes or comments out of the ordinary about the georeference, explaining assumptions made in addition or opposition to those formalized in the method referred to in georeferenceProtocol. e.g. assumed distance by road (Hwy. 101)" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="30" name="location_remarks" nullable="true" remarks="DarwinCore: Notes or comments of interest about the location (not the georeference of the location, which go in georeferenceRemarks). e.g. Villa Epecuen was inundated in November 1985 and ceased to be inhabited until 2009" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="31" name="georef_sources" nullable="true" remarks="" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="32" name="georef_by" nullable="true" remarks="DarwinCore: the individual(s) who last modified the georeference and when that happened. These correspond to the final authority on the georeference in its current state, regardless of who might have worked on previous versions of the georeference." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="33" name="georef_date" nullable="true" remarks="Date georeferenced" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="34" name="georef_protocol_id" nullable="true" remarks="FK. Link to dic_georef_protocol" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="georef_protocol_id" foreignKey="material_source_ibfk_6" implied="false" onDeleteCascade="false" table="dic_georef_protocol"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="35" name="osi_six_last" nullable="true" remarks="Presence or absence on OSI 6-inch historical map, last edition (1910s-1950s)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="36" name="osi_six_first" nullable="true" remarks="Presence or absence on OSI 6-inch historical map, first edition (1829-41)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="37" name="osi_twentyfive" nullable="true" remarks="Presence or absence on OSI 25-inch historical map (1897-1913)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="38" name="material_type_id" nullable="true" remarks="FK. Link to dic_material_type. Primary material type for this source." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_type_id" foreignKey="material_source_ibfk_7" implied="false" onDeleteCascade="false" table="dic_material_type"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="39" name="notes" nullable="true" remarks="Additional notes - these will not be published on the website" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="40" name="nsd_url" nullable="true" remarks="Link to the URL of the Northern Ireland Natural Stone Database" size="3000" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="41" name="active_quarry_id" nullable="true" remarks="GSI active quarry and pit ID." size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="42" name="county_geo_code" nullable="true" remarks="GSI county geological site code" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="43" name="entered_by" nullable="true" remarks="Person who entered the initial record" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="44" name="entered_date" nullable="true" remarks="Date of original entry. Autogenerated with current timestamp" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="45" name="modified_by" nullable="true" remarks="Person who made the latest modification" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="46" name="modified_date" nullable="true" remarks="Date of latest modification. Autogenerated current timestamp on update" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="47" name="geom" nullable="true" remarks="Stored computed column. Creates geom point from lat_dec and long_dec" size="0" type="POINT" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="48" name="material_source_tag" nullable="true" remarks="Autopopulated. Tag used for references and images. Created from material source name, punctuation and special characters removed and spaces and slashes replaced by underscores" size="255" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="material_source_id" sequenceNumberInPK="1"/>
+         <index name="material_source_s_pk" unique="true">
+            <column ascending="true" name="material_source_id"/>
+         </index>
+         <index name="county_id" unique="false">
+            <column ascending="true" name="county_id"/>
+         </index>
+         <index name="georef_protocol_id" unique="false">
+            <column ascending="true" name="georef_protocol_id"/>
+         </index>
+         <index name="material_source_name" unique="false">
+            <column ascending="true" name="material_source_name"/>
+         </index>
+         <index name="material_source_type_id" unique="false">
+            <column ascending="true" name="material_source_type_id"/>
+         </index>
+         <index name="material_type_id" unique="false">
+            <column ascending="true" name="material_type_id"/>
+         </index>
+         <index name="parent_material_source_id" unique="false">
+            <column ascending="true" name="parent_material_source_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_source_id"/>
+         </index>
+         <index name="status_id" unique="false">
+            <column ascending="true" name="status_id"/>
+         </index>
+         <index name="townland_id" unique="false">
+            <column ascending="true" name="townland_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="material_use" numRows="742" remarks="Material use in a heritage site. Central linking table, including details of where and how the material was used." type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="material_use_id" nullable="false" remarks="Primary key for material_use, auto-incrementing" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="material_use_id" foreignKey="material_use_finish_ibfk_2" implied="false" onDeleteCascade="false" table="material_use_finish"/>
+            <child catalog="stonebuiltdb_aug2025" column="material_use_id" foreignKey="person_material_use_ibfk_1" implied="false" onDeleteCascade="false" table="person_material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="heritage_site_id" nullable="false" remarks="FK. Heritage_site_id links to heritage_site" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="heritage_site_id" foreignKey="material_use_ibfk_1" implied="false" onDeleteCascade="false" table="heritage_site"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="construction_id" nullable="true" remarks="FK. Links to a particular phase of construction." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="construction_id" foreignKey="material_use_ibfk_3" implied="false" onDeleteCascade="false" table="construction"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="commodity_id" nullable="false" remarks="FK commodity_id links to commodity (material and material_source)" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="commodity_id" foreignKey="material_use_ibfk_2" implied="false" onDeleteCascade="false" table="commodity"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="location_id" nullable="true" remarks="FK. Link to location" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="location_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="location"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="use_feature_id" nullable="true" remarks="FK. Links to dictionary of feature types." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="use_feature_id" foreignKey="material_use_ibfk_7" implied="false" onDeleteCascade="false" table="dic_use_feature"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="is_original" nullable="true" remarks="Whether the material is original or not" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="material_condition_id" nullable="true" remarks="FK. Links to dictionary of material condition" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_condition_id" foreignKey="material_use_ibfk_4" implied="false" onDeleteCascade="false" table="dic_material_condition"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="material_use_detail" nullable="true" remarks="Described where the material is used" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="material_position_id" nullable="true" remarks="FK interior or exterior" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_position_id" foreignKey="material_use_ibfk_5" implied="false" onDeleteCascade="false" table="dic_material_position"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="source_distance_id" nullable="true" remarks="FK. How far away the material came from." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_source_distance_id" foreignKey="material_use_ibfk_6" implied="false" onDeleteCascade="false" table="dic_material_source_distance"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="11" name="documentary_sources" nullable="true" remarks="Source of the information (format for front end)" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="12" name="entered_by" nullable="true" remarks="" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="13" name="entered_date" nullable="true" remarks="" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="modified_by" nullable="true" remarks="" size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="15" name="modified_by_date" nullable="true" remarks="" size="19" type="DATETIME" typeCode="93"/>
+         <primaryKey column="material_use_id" sequenceNumberInPK="1"/>
+         <index name="material_use_s_pk" unique="true">
+            <column ascending="true" name="material_use_id"/>
+         </index>
+         <index name="commodity_id" unique="false">
+            <column ascending="true" name="commodity_id"/>
+         </index>
+         <index name="construction_id" unique="false">
+            <column ascending="true" name="construction_id"/>
+         </index>
+         <index name="fabrication_centre_id" unique="false">
+            <column ascending="true" name="location_id"/>
+         </index>
+         <index name="heritage_site_id" unique="false">
+            <column ascending="true" name="heritage_site_id"/>
+         </index>
+         <index name="material_condition_id" unique="false">
+            <column ascending="true" name="material_condition_id"/>
+         </index>
+         <index name="material_position_id" unique="false">
+            <column ascending="true" name="material_position_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_use_id"/>
+         </index>
+         <index name="source_distance_id" unique="false">
+            <column ascending="true" name="source_distance_id"/>
+         </index>
+         <index name="use_feature_id" unique="false">
+            <column ascending="true" name="use_feature_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="material_use_finish" numRows="715" remarks="Linking material use to one or more finishes" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="material_use_finish_id" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="material_use_id" nullable="false" remarks="FK. Link to material use." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_use_id" foreignKey="material_use_finish_ibfk_2" implied="false" onDeleteCascade="false" table="material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="finish_id" nullable="false" remarks="FK. Link to dic_finish." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="finish_id" foreignKey="material_use_finish_ibfk_1" implied="false" onDeleteCascade="false" table="dic_finish"/>
+         </column>
+         <primaryKey column="material_use_finish_id" sequenceNumberInPK="1"/>
+         <index name="material_use_finish_s_pk" unique="true">
+            <column ascending="true" name="material_use_finish_id"/>
+         </index>
+         <index name="finish_id" unique="false">
+            <column ascending="true" name="finish_id"/>
+         </index>
+         <index name="material_use_id" unique="false">
+            <column ascending="true" name="material_use_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="material_use_finish_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="person" numRows="618" remarks="People and firms/companies, including dates" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="person_id" nullable="false" remarks="PK autoincrementing unique identifer for people" size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_construction_ibfk_2" implied="false" onDeleteCascade="false" table="person_construction"/>
+            <child catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_location_ibfk_1" implied="false" onDeleteCascade="false" table="person_location"/>
+            <child catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_material_source_ibfk_2" implied="false" onDeleteCascade="false" table="person_material_source"/>
+            <child catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_material_use_ibfk_2" implied="false" onDeleteCascade="false" table="person_material_use"/>
+            <child catalog="stonebuiltdb_aug2025" column="person_id1" foreignKey="person_relationship_ibfk_1" implied="false" onDeleteCascade="false" table="person_relationship"/>
+            <child catalog="stonebuiltdb_aug2025" column="person_id2" foreignKey="person_relationship_ibfk_2" implied="false" onDeleteCascade="false" table="person_relationship"/>
+            <child catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_person_title_fk" implied="false" onDeleteCascade="false" table="person_title"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="1" name="last_name" nullable="true" remarks="Last name of the person" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="first_names" nullable="true" remarks="First names of the person" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="form_of_address_id" nullable="true" remarks="FK. Link to dic_form_of_address" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="form_of_address_id" foreignKey="person_form_of_address_fk" implied="false" onDeleteCascade="false" table="dic_form_of_address"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="person_suffix_id" nullable="true" remarks="FK. Link to dic_person_suffix" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="person_suffix_id" foreignKey="person_suffix_fk" implied="false" onDeleteCascade="false" table="dic_person_suffix"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="birth_year" nullable="true" remarks="Birth year (YYYY)" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="death_year" nullable="true" remarks="Death year (YYYY)" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="birth_date" nullable="true" remarks="Birth date" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="death_date" nullable="true" remarks="Death date" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="birth_date_verbatim" nullable="true" remarks="Verbatim birth date" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="death_date_verbatim" nullable="true" remarks="Verbatim death date" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="11" name="floruit_start" nullable="true" remarks="A start year for when this person or organization was most active (especially if no birth-death dates known)." size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="12" name="floruit_end" nullable="true" remarks="End year for when this person or organization was active (esp. if birth-death dates not known)." size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="13" name="dia_id" nullable="true" remarks="Dictionary of Irish Architects ID" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="dib_doi" nullable="true" remarks="DOI for the Dictionary of Irish Biography" size="3000" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="15" name="notes" nullable="true" remarks="Any notes about the person" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="16" name="role_id" nullable="true" remarks="Primary role id - links to dictionary of roles" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="role_id" foreignKey="person_role_fk" implied="false" onDeleteCascade="false" table="dic_role"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="17" name="primary_location" nullable="true" remarks="Primary location of the person, can be useful for distinguishing between people with the same name. Concatented with name e.g. John Smith (of Mayo)." size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="18" name="wikidata_id" nullable="true" remarks="Wikidata ID" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="19" name="person_tag_old" nullable="true" remarks="Stores the old person tag, now replaced with an auto-generated version." size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="20" name="is_individual" nullable="true" remarks="Whether or not this is a single person or other (company, group etc.)" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="21" name="is_public" nullable="true" remarks="Whether or not the information is public - will control appearance on the website." size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="22" name="is_current" nullable="true" remarks="Whether or not the person/firm is current" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="23" name="trading_as" nullable="true" remarks="Trading as, abbreviated to t/a." size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="24" name="person_desc" nullable="true" remarks="Description of the person" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="25" name="entered_by" nullable="true" remarks="" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="26" name="entered_date" nullable="true" remarks="" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="27" name="modified_by" nullable="true" remarks="" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="28" name="modified_date" nullable="true" remarks="Date of latest modification" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="29" name="pre_tag" nullable="true" remarks="Concatentates last name, first names, birth year, death year and primary location. First step to auto-generate a tag for the person." size="500" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="30" name="person_tag" nullable="true" remarks="Autogenerates a tag for people by removing special characters (except ampersands) from the pre-tag and replacing spaces with underscores." size="500" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="person_id" sequenceNumberInPK="1"/>
+         <index name="person_s_pk" unique="true">
+            <column ascending="true" name="person_id"/>
+         </index>
+         <index name="first_names" unique="false">
+            <column ascending="true" name="first_names"/>
+         </index>
+         <index name="last_name" unique="false">
+            <column ascending="true" name="last_name"/>
+         </index>
+         <index name="person_form_of_address_fk" unique="false">
+            <column ascending="true" name="form_of_address_id"/>
+         </index>
+         <index name="person_suffix_fk" unique="false">
+            <column ascending="true" name="person_suffix_id"/>
+         </index>
+         <index name="person_tag_unique" unique="true">
+            <column ascending="true" name="person_tag"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="person_id"/>
+         </index>
+         <index name="role_id" unique="false">
+            <column ascending="true" name="role_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="person_construction" numRows="551" remarks="Linking people to phases of construction" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="person_construction_id" nullable="false" remarks="PK. Auto incrementing" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="construction_id" nullable="false" remarks="FK. Link to construction." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="construction_id" foreignKey="person_construction_ibfk_1" implied="false" onDeleteCascade="false" table="construction"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="person_id" nullable="false" remarks="FK. Link to person." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_construction_ibfk_2" implied="false" onDeleteCascade="false" table="person"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="role_id" nullable="true" remarks="FK. Link to dic_role." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="role_id" foreignKey="person_construction_ibfk_3" implied="false" onDeleteCascade="false" table="dic_role"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="is_primary" nullable="true" remarks="Whether this person is one of the primary examples of this role. Controls order of appearance on website for architects specifically (primary architects vs. other architects). Default is FALSE." size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="person_construction_desc" nullable="true" remarks="Notes about the link between person and construction which can be made public (but currently not exposed on the website). This column contains some notes from the original STONEBUILT spreadsheet." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="documentary_sources" nullable="true" remarks="References that link this person to this construction phase" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="name_verbatim" nullable="true" remarks="Name of the person as originally reported - could be a variation of the version in the person table." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="notes" nullable="true" remarks="Other relevant notes for internal use only." size="65535" type="TEXT" typeCode="-1"/>
+         <primaryKey column="person_construction_id" sequenceNumberInPK="1"/>
+         <index name="person_construction_s_pk" unique="true">
+            <column ascending="true" name="person_construction_id"/>
+         </index>
+         <index name="person_construction_construction_fk" unique="false">
+            <column ascending="true" name="construction_id"/>
+         </index>
+         <index name="person_construction_role_fk" unique="false">
+            <column ascending="true" name="role_id"/>
+         </index>
+         <index name="person_id" unique="false">
+            <column ascending="true" name="person_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="person_construction_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="person_location" numRows="78" remarks="Linking people to a location (e.g. a marble mill, stoneworks)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="person_location_id" nullable="false" remarks="PK. Autoincrementing ID." size="10" type="INT" typeCode="4">
+            <child catalog="stonebuiltdb_aug2025" column="person_location_id" foreignKey="person_material_use_ibfk_4" implied="false" onDeleteCascade="false" table="person_material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="person_id" nullable="false" remarks="FK. Link to person table." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_location_ibfk_1" implied="false" onDeleteCascade="false" table="person"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="location_id" nullable="false" remarks="FK. Location table." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="location_id" foreignKey="person_location_ibfk_2" implied="false" onDeleteCascade="false" table="location"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="start_year" nullable="true" remarks="Year the person was first associated with the location." size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="end_year" nullable="true" remarks="Year the person was last associated with the location" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="start_year_verbatim" nullable="true" remarks="Verbatim start year, can be used to express uncertainty e.g. c.1981" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="end_year_verbatim" nullable="true" remarks="Verbatim end year, can be used to express uncertainty e.g. c.1981" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="start_date_artificial" nullable="true" remarks="Start date to be used for sorting - overprecise. January 1st used where only year is known." size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="end_date_artificial" nullable="true" remarks="End date to be used for sorting - overprecise. December 31st used where only year is known." size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="notes" nullable="true" remarks="Notes about the person's link to the location" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="documentary_sources" nullable="true" remarks="Sources which refer specifically to the persons link to the location." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="11" name="entered_by" nullable="true" remarks="" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="12" name="entered_date" nullable="true" remarks="" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="13" name="modified_by" nullable="true" remarks="" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="modified_date" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <primaryKey column="person_location_id" sequenceNumberInPK="1"/>
+         <index name="person_location_s_pk" unique="true">
+            <column ascending="true" name="person_location_id"/>
+         </index>
+         <index name="location_id" unique="false">
+            <column ascending="true" name="location_id"/>
+         </index>
+         <index name="person_id" unique="false">
+            <column ascending="true" name="person_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="person_location_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="person_material_source" numRows="302" remarks="Linking people to a material source (e.g. owner of a quarry)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="person_material_source_id" nullable="false" remarks="Primary key, autoincrementing" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="material_source_id" nullable="false" remarks="Link to material_source table" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_source_id" foreignKey="person_material_source_ibfk_1" implied="false" onDeleteCascade="false" table="material_source"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="2" name="person_id" nullable="true" remarks="Link to person table" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_material_source_ibfk_2" implied="false" onDeleteCascade="false" table="person"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="role_id" nullable="true" remarks="Link to dic_role table" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="role_id" foreignKey="person_material_source_ibfk_3" implied="false" onDeleteCascade="false" table="dic_role"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="dates" nullable="true" remarks="Dates when this person or organization was related to the material source. Usually not precise. Where known ranges should have the following format: 1800-1810." size="400" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="start_date" nullable="true" remarks="Start date, with the degree of detail known (i.e. could be to the century, year, month, day)." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="end_date" nullable="true" remarks="End date, with the degree of detail known (i.e. could be to the century, year, month, day)." size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="start_date_artificial" nullable="true" remarks="Date when this person was first associated with the material source. Over-precise date, for sorting purposes." size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="end_date_artificial" nullable="true" remarks="Date when the person stopped being associated with the material source. Over-precise, to be used for sorting." size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="is_primary" nullable="true" remarks="Is the primary person associated with this material source" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="10" name="notes_public" nullable="true" remarks="Notes about the relationship of this person (or group) to the material source" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="11" name="verbatim_name" nullable="true" remarks="Verbatim name of the person/group" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="12" name="notes_other" nullable="true" remarks="Any other notes, not for the website" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="13" name="documentary_sources" nullable="true" remarks="Sources linking person to material_source" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="14" name="relative_position" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
+         <primaryKey column="person_material_source_id" sequenceNumberInPK="1"/>
+         <index name="person_material_source_s_pk" unique="true">
+            <column ascending="true" name="person_material_source_id"/>
+         </index>
+         <index name="material_source_id" unique="false">
+            <column ascending="true" name="material_source_id"/>
+         </index>
+         <index name="person_material_source_person_fk" unique="false">
+            <column ascending="true" name="person_id"/>
+         </index>
+         <index name="person_material_source_role_fk" unique="false">
+            <column ascending="true" name="role_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="person_material_source_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="person_material_use" numRows="21" remarks="Linking people to a material use (e.g. stonemason to a carving)" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="person_material_use_id" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="material_use_id" nullable="false" remarks="FK. Link to material use" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="material_use_id" foreignKey="person_material_use_ibfk_1" implied="false" onDeleteCascade="false" table="material_use"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="person_id" nullable="false" remarks="FK. The person working on this feature" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_material_use_ibfk_2" implied="false" onDeleteCascade="false" table="person"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="role_id" nullable="true" remarks="FK. The role the person had while working on this feature (e.g. as a stoneworker)" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="role_id" foreignKey="person_material_use_ibfk_3" implied="false" onDeleteCascade="false" table="dic_role"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="person_location_id" nullable="true" remarks="FK. Link to person_location" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="person_location_id" foreignKey="person_material_use_ibfk_4" implied="false" onDeleteCascade="false" table="person_location"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="is_primary" nullable="true" remarks="Whether or not this person was the primary person working on this feature" size="3" type="TINYINT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="notes_public" nullable="true" remarks="Notes which could be made public about the person's link to the material use." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="7" name="notes_other" nullable="true" remarks="Internal notes" size="65535" type="TEXT" typeCode="-1"/>
+         <primaryKey column="person_material_use_id" sequenceNumberInPK="1"/>
+         <index name="person_material_use_s_pk" unique="true">
+            <column ascending="true" name="person_material_use_id"/>
+         </index>
+         <index name="material_use_id" unique="false">
+            <column ascending="true" name="material_use_id"/>
+         </index>
+         <index name="person_id" unique="false">
+            <column ascending="true" name="person_id"/>
+         </index>
+         <index name="person_location_id" unique="false">
+            <column ascending="true" name="person_location_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="person_material_use_id"/>
+         </index>
+         <index name="role_id" unique="false">
+            <column ascending="true" name="role_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="person_relationship" numRows="173" remarks="Linking people to other people e.g. parents/children" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="person_relationship_id" nullable="false" remarks="PK. Autoincrementing integer." size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="person_id1" nullable="false" remarks="FK. First person." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_relationship_ibfk_1" implied="false" onDeleteCascade="false" table="person"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="person_id2" nullable="false" remarks="FK. Second person." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_relationship_ibfk_2" implied="false" onDeleteCascade="false" table="person"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="relationship_id" nullable="false" remarks="FK. Relationship type, link to dic_relationship" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="relationship_id" foreignKey="person_relationship_ibfk_3" implied="false" onDeleteCascade="false" table="dic_relationship"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="relationship_notes" nullable="true" remarks="Notes about the relationship." size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="documentary_sources" nullable="true" remarks="Documentary sources about the relationship" size="65535" type="TEXT" typeCode="-1"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="entered_by" nullable="true" remarks="Person who entered the initial record" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="entered_date" nullable="true" remarks="" size="10" type="DATE" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="8" name="modified_by" nullable="true" remarks="" size="250" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="9" name="modified_date" nullable="true" remarks="" size="19" type="DATETIME" typeCode="93"/>
+         <primaryKey column="person_relationship_id" sequenceNumberInPK="1"/>
+         <index name="person_relationship_s_pk" unique="true">
+            <column ascending="true" name="person_relationship_id"/>
+         </index>
+         <index name="person_id1" unique="false">
+            <column ascending="true" name="person_id1"/>
+         </index>
+         <index name="person_id2" unique="false">
+            <column ascending="true" name="person_id2"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="person_relationship_id"/>
+         </index>
+         <index name="relationship_id" unique="false">
+            <column ascending="true" name="relationship_id"/>
+         </index>
+      </table>
+      <table catalog="stonebuiltdb_aug2025" name="person_title" numRows="70" remarks="Linking people to one or more titles" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="person_title_id" nullable="false" remarks="PK. Autoincrementing" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="person_id" nullable="false" remarks="FK. Link to person table" size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="person_id" foreignKey="person_person_title_fk" implied="false" onDeleteCascade="false" table="person"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="title_id" nullable="false" remarks="FK. Link to dic_title." size="10" type="INT" typeCode="4">
+            <parent catalog="stonebuiltdb_aug2025" column="title_id" foreignKey="title_person_title_fk" implied="false" onDeleteCascade="false" table="dic_title"/>
+         </column>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="3" name="start_date" nullable="true" remarks="Year when the person was first associated with the title" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="4" name="end_date" nullable="true" remarks="Year when the person was last associated with the title" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="5" name="title_number" nullable="true" remarks="If the title has a number, e.g. 1st Earl of Mayo, enter position here (as an integer)." size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="NULL" digits="0" id="6" name="title_location" nullable="true" remarks="If the title is tied to a place e.g. Earl of Mayo, then enter the place name here." size="250" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="person_title_id" sequenceNumberInPK="1"/>
+         <index name="person_title_s_pk" unique="true">
+            <column ascending="true" name="person_title_id"/>
+         </index>
+         <index name="person_person_title_fk" unique="false">
+            <column ascending="true" name="person_id"/>
+         </index>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="person_title_id"/>
+         </index>
+         <index name="title_person_title_fk" unique="false">
+            <column ascending="true" name="title_id"/>
+         </index>
+      </table>
+   </tables>
+</database>

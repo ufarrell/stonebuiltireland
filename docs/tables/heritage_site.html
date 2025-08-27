@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>heritage_site - stonebuiltdb_aug2025.stonebuiltdb_aug2025</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="../bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="../bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="../bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="../bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='../fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='../fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="../bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="../schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="../bower/html5shiv/html5shiv.min.js"></script>
+        <script src="../bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="../index.html" class="navbar-brand"><b>stonebuiltdb_aug2025</b></a><span class="navbar-brand" style="padding-left: 0">.stonebuiltdb_aug2025</span>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="../index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="../columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="../constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="../relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="../orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="../anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="../routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>heritage_site</h1><p><span id="recordNumber">181</span> rows</p><br />
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-file-text-o"></i>
+                            <h3 id="Description" class="box-title">Description</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body clearfix">
+                            <p>Heritages sites including their location and a description</p>
+                        </div><!-- /.box-body -->
+                    </div>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <h3 id="Columns" class="box-title">Columns</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Column</th>
+                                    <th>Type</th>
+                                    <th>Size</th>
+                                    <th title='Are nulls allowed?'>Nulls</th>
+                                    <th title='Is column automatically updated?'>Auto</th>
+                                    <th title='Default value'>Default</th>
+                                    <th title='Columns in tables that reference this column'>Children</th>
+                                    <th title='Columns in tables that are referenced by this column'>Parents</th>
+                                    <th title='Comments' class="toggle"><span>Comments</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="heritage_site_id">heritage_site_id</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title=''></td>
+                                    <td title='Automatically updated by the database'>√</td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="construction.heritage_site_id references heritage_site.heritage_site_id via construction_ibfk_1"><a href='construction.html'>construction</a><span class='relatedKey'>.heritage_site_id</span></td>
+                                                <td class="constraint detail">construction_ibfk_1</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="material_use.heritage_site_id references heritage_site.heritage_site_id via material_use_ibfk_1"><a href='material_use.html'>material_use</a><span class='relatedKey'>.heritage_site_id</span></td>
+                                                <td class="constraint detail">material_use_ibfk_1</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Primary key, autoincrementing ID</p></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="heritage_site_name">heritage_site_name</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>250</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Name of the heritage site. Not NULL, unique. If multiple sites exist with the same name, include additional identifying information as appropriate (e.g. town, city, county). Church of Ireland = CoI. Roman catholic = RC.</p></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="heritage_site_type_id">heritage_site_type_id</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="heritage_site.heritage_site_type_id references dic_heritage_site_type.heritage_site_type_id via heritage_site_ibfk_2"><a href='dic_heritage_site_type.html'>dic_heritage_site_type</a><span class='relatedKey'>.heritage_site_type_id</span></td>
+                                                <td class="constraint detail">heritage_site_ibfk_2</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td><p>FK. Link to dictionary of site types</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="is_public">is_public</span></td>
+                                    <td>TINYINT</td>
+                                    <td>3</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Whether the site is public or not. Used to control appearance on website.</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="address_locality">address_locality</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>500</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Street address if available, general name/locality if street address is not available</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="town_city">town_city</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>500</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Town/City/Village name</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="lat_dec">lat_dec</span></td>
+                                    <td>DECIMAL</td>
+                                    <td>8,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Latitude as a decimal type (usually from google maps)</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="long_dec">long_dec</span></td>
+                                    <td>DECIMAL</td>
+                                    <td>9,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Longitude as a decimal type (usually from google maps)</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="datum">datum</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>250</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Geodetic datum (usually WGS84 from google maps)</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="uncertainty_m">uncertainty_m</span></td>
+                                    <td>DECIMAL</td>
+                                    <td>10,2</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>DarwinCore: The horizontal distance in meters from the given decimalLatitude and decimalLongitude that describes the smallest enclosing circle that contains the whole of the location. Leave the value empty if the uncertainty is unknown, cannot be estimated, or is not applicable (because there are no coordinates). Zero is not a valid value for this term. This term corresponds with the geographic radial of the final georeference.</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="georef_remarks">georef_remarks</span></td>
+                                    <td>TEXT</td>
+                                    <td>65535</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>DarwinCore: Notes or comments out of the ordinary about the georeference, explaining assumptions made in addition or opposition to those formalized in the method referred to in georeferenceProtocol. e.g. assumed distance by road (Hwy. 101)</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="location_remarks">location_remarks</span></td>
+                                    <td>TEXT</td>
+                                    <td>65535</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>DarwinCore: Notes or comments of interest about the location (not the georeference of the location, which go in georeferenceRemarks). e.g. Villa Epecuen was inundated in November 1985 and ceased to be inhabited until 2009</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="georef_date">georef_date</span></td>
+                                    <td>DATE</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Date georeferenced</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="georef_by">georef_by</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>250</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>DarwinCore: the individual(s) who last modified the georeference and when that happened. These correspond to the final authority on the georeference in its current state, regardless of who might have worked on previous versions of the georeference.</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="georef_sources">georef_sources</span></td>
+                                    <td>TEXT</td>
+                                    <td>65535</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>DarwinCore: A list (concatenated and separated) of maps, gazetteers, or other resources used to georeference the location, described specifically enough to allow anyone in the future to use the same resources.</p></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="georef_protocol_id">georef_protocol_id</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="heritage_site.georef_protocol_id references dic_georef_protocol.georef_protocol_id via heritage_site_ibfk_5"><a href='dic_georef_protocol.html'>dic_georef_protocol</a><span class='relatedKey'>.georef_protocol_id</span></td>
+                                                <td class="constraint detail">heritage_site_ibfk_5</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td><p>FK. Link to dic_georef_protocol</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="osi_six_last">osi_six_last</span></td>
+                                    <td>TINYINT</td>
+                                    <td>3</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Presence or absence on OSI 6-inch historical map, last edition (1910s-1950s)</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="osi_six_first">osi_six_first</span></td>
+                                    <td>TINYINT</td>
+                                    <td>3</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Presence or absence on OSI 6-inch historical map, first edition (1829-41)</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="osi_twentyfive">osi_twentyfive</span></td>
+                                    <td>TINYINT</td>
+                                    <td>3</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Presence or absence on OSI 25-inch historical map (1897-1913)</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="townland_verbatim">townland_verbatim</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>250</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Verbatim townland name. For use especially for areas without formal townland designation (e.g. in Dublin)</p></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="townland_id">townland_id</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="heritage_site.townland_id references dic_townland.townland_id via heritage_site_ibfk_3"><a href='dic_townland.html'>dic_townland</a><span class='relatedKey'>.townland_id</span></td>
+                                                <td class="constraint detail">heritage_site_ibfk_3</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td><p>FK. Link to townlands.ie dictionary</p></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="county_id">county_id</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="heritage_site.county_id references dic_county.county_id via heritage_site_ibfk_1"><a href='dic_county.html'>dic_county</a><span class='relatedKey'>.county_id</span></td>
+                                                <td class="constraint detail">heritage_site_ibfk_1</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td><p>FK. Link to dictionary of counties</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="country_code">country_code</span></td>
+                                    <td>CHAR</td>
+                                    <td>3</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>&#39;IE&#39;</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Country code, ISO standard. Default: IE</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="heritage_site_desc">heritage_site_desc</span></td>
+                                    <td>TEXT</td>
+                                    <td>65535</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Details of the heritage site, which will appear on the website. HTML tags are included for formatting.</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="harbison_id">harbison_id</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>100</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Identifier from Harbison, P. (1970). Guide to the National Monuments in the Republic of Ireland. 1st Ed. Gill and Macmillan, M.H. Gill &amp; Co. U. C.</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="nat_mon_id">nat_mon_id</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>National Monument Number. Description from National Monuments Service: When a monument is taken into State ownership or guardianship its details are added to a National Monuments Register. In the earlier years, when a number of monuments were taken in State care at the same time, they were all given the same register number e.g. the monuments on the Dingle peninsula are all registered under number 221. Similarly, groups of monument such as the passage tombs at Lough Crew will have the same registration number.  The register is not entirely up-to-date with the result that some of the more recent acquisitions have yet to be assigned numbers.&quot;</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="opw_monuments_ID">opw_monuments_ID</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>ID from spreadsheet from OPW of monuments in state care.</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="rmp_id">rmp_id</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>250</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Description from National Monuments Service: Each monument is entered in the Record of Monuments and Places (RMP) as established under Section 12 of the National Monuments (Amendment) Act 1994. A unique identifying number is assigned to each monument and place in the record. The RMP number provides the link to the records of the Archaeological Survey of Ireland (ASI) which contains further information on the monument in question.</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="dia_id">dia_id</span></td>
+                                    <td>MEDIUMINT</td>
+                                    <td>7</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>ID from the Dictionary of Irish Architects.</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="niah_reg_no">niah_reg_no</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Registration number from the National Inventory of Architectural Heritage (NIAH)</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="is_opw_site">is_opw_site</span></td>
+                                    <td>TINYINT</td>
+                                    <td>3</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Whether or not the heritage site is run by the Office of Public Works (OPW)</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="opw_url">opw_url</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>3000</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Url for the Office of Public Works website (OPW)</p></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="century_id">century_id</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="heritage_site.century_id references dic_century.century_id via heritage_site_ibfk_4"><a href='dic_century.html'>dic_century</a><span class='relatedKey'>.century_id</span></td>
+                                                <td class="constraint detail">heritage_site_ibfk_4</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td><p>FK. Link to dictionary of centuries</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="entered_by">entered_by</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>250</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Person who originally entered the record</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="entered_date">entered_date</span></td>
+                                    <td>DATETIME</td>
+                                    <td>19</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>current_timestamp()</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Date of original entry</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="modified_by">modified_by</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>250</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Person who made the latest modification</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="modified_date">modified_date</span></td>
+                                    <td>DATETIME</td>
+                                    <td>19</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Date of latest modification - auto updates on modification</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="irish_grid_easting">irish_grid_easting</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Irish grid easting</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="irish_grid_northing">irish_grid_northing</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Irish grid northing</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="itm_easting">itm_easting</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>ITM easting</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="itm_northing">itm_northing</span></td>
+                                    <td>INT</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>ITM northing</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="site_visit">site_visit</span></td>
+                                    <td>TINYINT</td>
+                                    <td>3</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Whether or not the site was visited in person</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="site_visit_by">site_visit_by</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>500</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Who visited the site</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="site_visit_date">site_visit_date</span></td>
+                                    <td>DATE</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Date of the last site visit</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="site_visit_notes">site_visit_notes</span></td>
+                                    <td>TEXT</td>
+                                    <td>65535</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Notes about the visit</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="notes">notes</span></td>
+                                    <td>TEXT</td>
+                                    <td>65535</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>General additional notes, not for public website</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="geom">geom</span></td>
+                                    <td>POINT</td>
+                                    <td>0</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Point data type generated from decimal lat and long</p></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="heritage_site_tag">heritage_site_tag</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>255</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>NULL</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>Autogenerated unique tag for heritage sites, used to link heritage sites to references in Zotero and images in the WP image library. Created by taking the heritage site name and removing all special characters/punctuation, replacing spaces and slashes with underscores.</p></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-sitemap"></i>
+                            <h3 id="Indexes" class="box-title">Indexes</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
+                                <thead>
+                                <tr>
+                                    <th>Constraint Name</th>
+                                    <th>Type</th>
+                                    <th>Sort</th>
+                                    <th>Column(s)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> heritage_site_s_pk</td>
+                                    <td>Primary key</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>heritage_site_id</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>century_id</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>century_id</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>county_id</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>county_id</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>georef_protocol_id</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>georef_protocol_id</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>heritage_site_name</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>heritage_site_name</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>heritage_site_type_id</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>heritage_site_type_id</td>
+                                </tr>
+                                <tr>
+                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> PRIMARY</td>
+                                    <td>Must be unique</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>heritage_site_id</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>townland_id</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>townland_id</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 id="Relationships" class="box-title">Relationships</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom"><!-- Tabs within a box -->
+                                <h5>Close relationships within degrees of separation</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#oneDegreeImg-chart" data-toggle="tab" aria-expanded="true">One</a></li>
+                                    <li class=""><a href="#twodegreesDegreeImg-chart" data-toggle="tab" aria-expanded="true">Two degrees</a></li>
+                                    <li class=""><a href="#oneimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">One implied</a></li>
+                                    <li class=""><a href="#twoimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">Two implied</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
+<area shape="rect" id="node1" href="construction.html" target="_top" title="construction" alt="" coords="769,87,1008,233">
+<area shape="rect" id="node2" href="heritage_site.html" target="_top" title="heritage_site" alt="" coords="351,60,725,1537">
+<area shape="rect" id="node3" href="dic_century.html" target="_top" title="dic_century" alt="" coords="58,1001,254,1119">
+<area shape="rect" id="node4" href="dic_county.html" target="_top" title="dic_county" alt="" coords="63,808,249,925">
+<area shape="rect" id="node5" href="dic_georef_protocol.html" target="_top" title="dic_georef_protocol" alt="" coords="13,503,299,620">
+<area shape="rect" id="node6" href="dic_heritage_site_type.html" target="_top" title="dic_heritage_site_type" alt="" coords="5,121,307,239">
+<area shape="rect" id="node7" href="dic_townland.html" target="_top" title="dic_townland" alt="" coords="50,644,262,791">
+<area shape="rect" id="node8" href="material_use.html" target="_top" title="material_use" alt="" coords="1052,5,1313,357">
+</map>
+                                        <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/heritage_site.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
+<area shape="rect" id="node1" href="commodity.html" target="_top" title="commodity" alt="" coords="857,1464,1049,1552">
+<area shape="rect" id="node2" href="material.html" target="_top" title="material" alt="" coords="455,1711,621,1799">
+<area shape="rect" id="node3" href="material_source.html" target="_top" title="material_source" alt="" coords="419,1605,657,1693">
+<area shape="rect" id="node8" href="dic_county.html" target="_top" title="dic_county" alt="" coords="63,1632,249,1749">
+<area shape="rect" id="node9" href="dic_georef_protocol.html" target="_top" title="dic_georef_protocol" alt="" coords="13,1333,299,1451">
+<area shape="rect" id="node11" href="dic_townland.html" target="_top" title="dic_townland" alt="" coords="50,1468,262,1615">
+<area shape="rect" id="node4" href="construction.html" target="_top" title="construction" alt="" coords="850,85,1057,173">
+<area shape="rect" id="node5" href="heritage_site.html" target="_top" title="heritage_site" alt="" coords="351,5,725,1483">
+<area shape="rect" id="node7" href="dic_century.html" target="_top" title="dic_century" alt="" coords="58,947,254,1064">
+<area shape="rect" id="node10" href="dic_heritage_site_type.html" target="_top" title="dic_heritage_site_type" alt="" coords="5,67,307,184">
+<area shape="rect" id="node6" href="construction_styles.html" target="_top" title="construction_styles" alt="" coords="1186,136,1459,224">
+<area shape="rect" id="node12" href="location.html" target="_top" title="location" alt="" coords="457,1500,619,1588">
+<area shape="rect" id="node13" href="material_use.html" target="_top" title="material_use" alt="" coords="1219,972,1427,1060">
+<area shape="rect" id="node14" href="dic_material_condition.html" target="_top" title="dic_material_condition" alt="" coords="802,1569,1105,1657">
+<area shape="rect" id="node15" href="dic_material_position.html" target="_top" title="dic_material_position" alt="" coords="808,864,1099,952">
+<area shape="rect" id="node16" href="dic_material_source_distance.html" target="_top" title="dic_material_source_distance" alt="" coords="769,969,1137,1057">
+<area shape="rect" id="node17" href="dic_use_feature.html" target="_top" title="dic_use_feature" alt="" coords="835,1075,1071,1163">
+<area shape="rect" id="node18" href="material_use_finish.html" target="_top" title="material_use_finish" alt="" coords="1514,916,1786,1004">
+<area shape="rect" id="node19" href="person_construction.html" target="_top" title="person_construction" alt="" coords="1181,31,1464,119">
+<area shape="rect" id="node20" href="person_material_use.html" target="_top" title="person_material_use" alt="" coords="1508,1021,1792,1109">
+</map>
+                                        <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/heritage_site.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="oneimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="oneDegreeRelationshipsDiagramImplied" name="oneDegreeRelationshipsDiagramImplied">
+<area shape="rect" id="node1" href="construction.html" target="_top" title="construction" alt="" coords="769,87,1008,233">
+<area shape="rect" id="node2" href="heritage_site.html" target="_top" title="heritage_site" alt="" coords="351,60,725,1537">
+<area shape="rect" id="node3" href="dic_century.html" target="_top" title="dic_century" alt="" coords="58,1001,254,1119">
+<area shape="rect" id="node4" href="dic_county.html" target="_top" title="dic_county" alt="" coords="63,808,249,925">
+<area shape="rect" id="node5" href="dic_georef_protocol.html" target="_top" title="dic_georef_protocol" alt="" coords="13,503,299,620">
+<area shape="rect" id="node6" href="dic_heritage_site_type.html" target="_top" title="dic_heritage_site_type" alt="" coords="5,121,307,239">
+<area shape="rect" id="node7" href="dic_townland.html" target="_top" title="dic_townland" alt="" coords="50,644,262,791">
+<area shape="rect" id="node8" href="material_use.html" target="_top" title="material_use" alt="" coords="1052,5,1313,357">
+</map>
+                                        <a name='diagram'><img id="oneimpliedDegreeImg" src="../diagrams/tables/heritage_site.implied1degrees.png" usemap="#oneDegreeRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="twoimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="twoDegreesRelationshipsDiagramImplied" name="twoDegreesRelationshipsDiagramImplied">
+<area shape="rect" id="node1" href="commodity.html" target="_top" title="commodity" alt="" coords="857,1589,1049,1677">
+<area shape="rect" id="node2" href="material.html" target="_top" title="material" alt="" coords="455,1711,621,1799">
+<area shape="rect" id="node3" href="material_source.html" target="_top" title="material_source" alt="" coords="419,1605,657,1693">
+<area shape="rect" id="node8" href="dic_county.html" target="_top" title="dic_county" alt="" coords="63,1632,249,1749">
+<area shape="rect" id="node9" href="dic_georef_protocol.html" target="_top" title="dic_georef_protocol" alt="" coords="13,1333,299,1451">
+<area shape="rect" id="node11" href="dic_townland.html" target="_top" title="dic_townland" alt="" coords="50,1468,262,1615">
+<area shape="rect" id="node4" href="construction.html" target="_top" title="construction" alt="" coords="850,547,1057,635">
+<area shape="rect" id="node5" href="heritage_site.html" target="_top" title="heritage_site" alt="" coords="351,5,725,1483">
+<area shape="rect" id="node7" href="dic_century.html" target="_top" title="dic_century" alt="" coords="58,947,254,1064">
+<area shape="rect" id="node10" href="dic_heritage_site_type.html" target="_top" title="dic_heritage_site_type" alt="" coords="5,67,307,184">
+<area shape="rect" id="node6" href="construction_styles.html" target="_top" title="construction_styles" alt="" coords="1186,597,1459,685">
+<area shape="rect" id="node12" href="location.html" target="_top" title="location" alt="" coords="457,1500,619,1588">
+<area shape="rect" id="node13" href="material_use.html" target="_top" title="material_use" alt="" coords="1219,1432,1427,1520">
+<area shape="rect" id="node14" href="dic_material_condition.html" target="_top" title="dic_material_condition" alt="" coords="802,1695,1105,1783">
+<area shape="rect" id="node15" href="dic_material_position.html" target="_top" title="dic_material_position" alt="" coords="808,1185,1099,1273">
+<area shape="rect" id="node16" href="dic_material_source_distance.html" target="_top" title="dic_material_source_distance" alt="" coords="769,1291,1137,1379">
+<area shape="rect" id="node17" href="dic_use_feature.html" target="_top" title="dic_use_feature" alt="" coords="835,1396,1071,1484">
+<area shape="rect" id="node18" href="material_use_finish.html" target="_top" title="material_use_finish" alt="" coords="1514,1376,1786,1464">
+<area shape="rect" id="node19" href="person_construction.html" target="_top" title="person_construction" alt="" coords="1181,492,1464,580">
+<area shape="rect" id="node20" href="person_material_use.html" target="_top" title="person_material_use" alt="" coords="1508,1481,1792,1569">
+</map>
+                                        <a name='diagram'><img id="twoimpliedDegreeImg" src="../diagrams/tables/heritage_site.implied2degrees.png" usemap="#twoDegreesRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                </section>
+                <script>
+                    var config = {
+                        pagination: true
+                    }
+                </script>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 7.0.2</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="../bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="../bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="../bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="../bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="../bower/pdfmake/pdfmake.min.js"></script>
+        <script src="../bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="../bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="../bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="../bower/codemirror/codemirror.js"></script>
+        <script src="../bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="table.js"></script>
+        <script src="../schemaSpy.js"></script>
+    </body>
+</html>
